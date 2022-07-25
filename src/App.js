@@ -1,5 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import ProductGrid from "./components/ProductGrid";
+import { Navbar } from "./components/Navbar";
+import { Cart } from './components/Cart'
 
 const ids = [
   "1001",
@@ -19,28 +21,32 @@ function App() {
   const [items, setItems] = useState({});
 
   const updateItem = useCallback((id, quantity) => {
-    setItems((prevItems) => {
-      return {
-        ...prevItems,
-        [id]: quantity,
-      };
-    });
+      setItems((prevItems) => {
+        return {
+          ...prevItems,
+          [id]: quantity,
+        };
+      });
   }, []);
 
   useEffect(() => {
     let total = 0;
     Object.keys(items).forEach((key) => {
-      total += items[key];
+      total += Number(items[key]);
     });
     setTotalQuantity(total);
+
   }, [items]);
 
+  console.log(totalQuantity, items)
   return (
+    <>
+    <Navbar/>
     <div className="flex flex-col justify-center bg-gray-100">
-      <ProductGrid ids={ids} updateItem={updateItem} />
-      <h3>Total Quantity : {totalQuantity}</h3>
-      <h3>Total Price: &#8377; {totalQuantity * 10}</h3>
+      <ProductGrid ids={ids} updateItem={updateItem} />    
     </div>
+    { totalQuantity > 0 && <Cart totalQuantity={totalQuantity}/> }
+    </>
   );
 }
 
