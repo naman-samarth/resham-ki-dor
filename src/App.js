@@ -10,6 +10,8 @@ ids = ids.map((value, index) => 101 + index);
 
 function App() {
   const [totalQuantity, setTotalQuantity] = useState(0);
+  const [name, setName] = useState(null);
+  const [phoneNumber, setPhoneNumber] = useState(null);
   const [items, setItems] = useState({});
 
   const updateItem = useCallback((id, quantity) => {
