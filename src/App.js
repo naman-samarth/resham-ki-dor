@@ -1,32 +1,24 @@
 import { useCallback, useEffect, useState } from "react";
 import ProductGrid from "./components/ProductGrid";
 import { Navbar } from "./components/Navbar";
-import { Cart } from './components/Cart'
+import { Cart } from "./components/Cart";
 
-const ids = [
-  "1001",
-  "1002",
-  "1003",
-  "1004",
-  "1005",
-  "1006",
-  "1007",
-  "1008",
-  "1009",
-  "1010",
-];
+const PRODUCTS_SIZE = process.env.REACT_APP_PRODUCTS_SIZE;
+
+let ids = Array.apply(0, Array(parseInt(PRODUCTS_SIZE)));
+ids = ids.map((value, index) => 101 + index);
 
 function App() {
   const [totalQuantity, setTotalQuantity] = useState(0);
   const [items, setItems] = useState({});
 
   const updateItem = useCallback((id, quantity) => {
-      setItems((prevItems) => {
-        return {
-          ...prevItems,
-          [id]: quantity,
-        };
-      });
+    setItems((prevItems) => {
+      return {
+        ...prevItems,
+        [id]: quantity,
+      };
+    });
   }, []);
 
   useEffect(() => {
@@ -35,17 +27,15 @@ function App() {
       total += Number(items[key]);
     });
     setTotalQuantity(total);
-
   }, [items]);
 
-  console.log(totalQuantity, items)
   return (
     <>
-    <Navbar/>
-    <div className="flex flex-col justify-center bg-gray-100">
-      <ProductGrid ids={ids} updateItem={updateItem} />    
-    </div>
-    { totalQuantity > 0 && <Cart totalQuantity={totalQuantity}/> }
+      <Navbar />
+      <div className="flex flex-col justify-center bg-gray-100">
+        <ProductGrid ids={ids} updateItem={updateItem} />
+      </div>
+      {totalQuantity > 0 && <Cart totalQuantity={totalQuantity} />}
     </>
   );
 }

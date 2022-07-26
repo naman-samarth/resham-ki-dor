@@ -1,19 +1,20 @@
 import React, { useEffect, useState } from "react";
 
+const IMG_BASE_URL =
+  "https://storage.googleapis.com/resham-ki-dor/rakhi-photos/";
+
 const Product = ({ id, updateItem }) => {
   const [quantity, setQuantity] = useState(0);
   useEffect(() => {
-      updateItem(id, quantity);
+    updateItem(id, quantity);
   }, [id, quantity, updateItem]);
 
   const handleChange = (e) => {
-
-      setQuantity(e.target.value)
-    
-  }
+    setQuantity(e.target.value);
+  };
   return (
     <div className="flex flex-col items-center">
-      <img alt='img' src="https://static.toiimg.com/thumb/70672090.cms?width=680&height=512&imgsize=695460" />
+      <img alt="img" src={`${IMG_BASE_URL}${id}.webp`} />
       <h3>&#8377; 10</h3>
       <div className="flex">
         <div class="flex justify-center">
@@ -38,11 +39,9 @@ const Product = ({ id, updateItem }) => {
               onChange={handleChange}
             >
               <option selected>Qty</option>
-              {
-                [...Array(10).keys()].map(item => 
-                  <option value={item +1}>{item+1}</option>
-                )
-              }
+              {[...Array(10).keys()].map((item) => (
+                <option value={item + 1}>{item + 1}</option>
+              ))}
             </select>
           </div>
         </div>
