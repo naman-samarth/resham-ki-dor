@@ -51,18 +51,19 @@ function App() {
   return (
     <>
       <Navbar />
-      <div className="flex flex-col justify-center bg-gray-100">
+      <div className="flex flex-col justify-center bg-red-100">
         <ProductGrid
           ids={ids}
           pricePerItem={PRICE_PER_ITEM}
           updateItem={updateItem}
+          totalQuantity={totalQuantity}
         />
       </div>
       {totalQuantity > 0 && (
         <Cart
           totalQuantity={totalQuantity}
-          pricePerItem={PRICE_PER_ITEM}
           onPressConfirm={() => setShowModal(true)}
+          totalPrice={totalQuantity * parseInt(PRICE_PER_ITEM)}
         />
       )}
       {showModal && (
