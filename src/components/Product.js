@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 const IMG_BASE_URL =
   "https://storage.googleapis.com/resham-ki-dor/rakhi-photos/";
 
-const Product = ({ id, updateItem }) => {
+const Product = ({ id, pricePerItem, updateItem }) => {
   const [quantity, setQuantity] = useState(0);
   useEffect(() => {
     updateItem(id, quantity);
@@ -15,7 +15,7 @@ const Product = ({ id, updateItem }) => {
   return (
     <div className="flex flex-col items-center">
       <img alt="img" src={`${IMG_BASE_URL}${id}.webp`} />
-      <h3>&#8377; 10</h3>
+      <h3>&#8377; {pricePerItem}</h3>
       <div className="flex">
         <div class="flex justify-center">
           <div class="mb-3 xl:w-96">

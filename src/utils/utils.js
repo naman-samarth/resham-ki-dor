@@ -10,7 +10,7 @@ const PHONE_PREFIX = "\nPhone: ";
 const ITEMS_PREFIX = "\n\nItems: ";
 const PRICE_PREFIX = "\n\nTotal Price: ₹";
 
-const generateLink = (
+export const generateLink = (
   destination,
   name,
   source,
@@ -43,9 +43,19 @@ const generateLink = (
 const getItemsString = (items) => {
   let itemsString = "";
   Object.keys(items).forEach((key) => {
-    itemsString += `\n#${key} -- ${items[key]}`;
+    if (items[key] > 0) {
+      itemsString += `\n#${key} -- ${items[key]}`;
+    }
   });
   return itemsString;
 };
 
-export { generateLink };
+export const validatePhone = (value) => {
+  if (!validateFormValue(value)) return false;
+  return /^\d{10}$/.test(value);
+};
+
+export const validateFormValue = (value) => {
+  if (value === "undefined" || value == null || value === "") return false;
+  return true;
+};
