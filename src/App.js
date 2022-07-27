@@ -7,7 +7,8 @@ import { generateLink } from "./utils/utils";
 import Modal from "react-modal";
 
 const PRODUCTS_SIZE = process.env.REACT_APP_PRODUCTS_SIZE;
-const DEST_PHONE_NUMBER = process.env.REACT_APP_PHONE_NUMBER;
+const SELLER_NAME = process.env.REACT_APP_SELLER_NAME;
+const SELLER_PHONE_NUMBER = process.env.REACT_APP_SELLER_PHONE_NUMBER;
 const PRICE_PER_ITEM = process.env.REACT_APP_PRICE_PER_ITEM;
 const TOTAL_LIMIT = process.env.REACT_APP_TOTAL_LIMIT;
 
@@ -35,7 +36,7 @@ function App() {
   const onPressConfirm = ({ name, phone }) => {
     window.open(
       generateLink(
-        DEST_PHONE_NUMBER,
+        SELLER_PHONE_NUMBER,
         name,
         phone,
         totalQuantity,
@@ -56,13 +57,14 @@ function App() {
 
   return (
     <>
-      <Navbar />
+      <Navbar sellerName={SELLER_NAME} sellerPhone={SELLER_PHONE_NUMBER} />
       <div className="flex flex-col justify-center bg-red-100">
         <ProductGrid
           ids={ids}
           pricePerItem={PRICE_PER_ITEM}
           updateItem={updateItem}
           totalQuantity={totalQuantity}
+          totalLimit={TOTAL_LIMIT}
         />
       </div>
       {totalQuantity > 0 && (
