@@ -1,7 +1,13 @@
 import React from "react";
 import Product from "./Product";
 
-const ProductGrid = ({ ids, updateItem, pricePerItem, totalQuantity }) => {
+const ProductGrid = ({
+  ids,
+  updateItem,
+  pricePerItem,
+  totalQuantity,
+  totalLimit,
+}) => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-5 p-5 md:p-20 ">
       {ids.map((id) => (
@@ -11,6 +17,7 @@ const ProductGrid = ({ ids, updateItem, pricePerItem, totalQuantity }) => {
           pricePerItem={pricePerItem}
           updateItem={updateItem}
           totalQuantity={totalQuantity}
+          totalLimit={totalLimit}
         />
       ))}
     </div>

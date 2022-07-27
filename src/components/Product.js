@@ -4,14 +4,21 @@ import { CounterButton } from "./CounterButton";
 const IMG_BASE_URL =
   "https://storage.googleapis.com/resham-ki-dor/rakhi-photos/";
 
-const Product = ({ id, pricePerItem, updateItem, totalQuantity }) => {
+const Product = ({
+  id,
+  pricePerItem,
+  updateItem,
+  totalQuantity,
+  totalLimit,
+}) => {
   const [quantity, setQuantity] = useState(0);
   useEffect(() => {
     updateItem(id, quantity);
   }, [id, quantity, updateItem]);
 
   const increment = () => {
-    if (quantity < 10 && totalQuantity < 10) setQuantity((value) => value + 1);
+    if (quantity < totalLimit && totalQuantity < totalLimit)
+      setQuantity((value) => value + 1);
   };
 
   const decrement = () => {
@@ -31,7 +38,7 @@ const Product = ({ id, pricePerItem, updateItem, totalQuantity }) => {
           <CounterButton
             title="+"
             onClick={increment}
-            disabled={quantity >= 10 || totalQuantity >= 10}
+            disabled={quantity >= totalLimit || totalQuantity >= 10}
           />
           <div className="w-10 h-10  text-gray-600 flex justify-center items-center">
             {quantity}
