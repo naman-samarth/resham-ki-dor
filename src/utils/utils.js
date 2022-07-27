@@ -9,7 +9,7 @@ const ITEMS_PREFIX = "\n\nItems: ";
 const PRICE_PREFIX = "\n\nTotal Price: ₹ ";
 
 export const generateLink = (
-  destination,
+  sellerPhone,
   name,
   source,
   totalQuantity,
@@ -18,10 +18,10 @@ export const generateLink = (
 ) => {
   const orderId = getUniqueOrderId();
   const timestamp = new Date().toString();
-
+  const sellerPhoneWithCode = "91" + sellerPhone;
   return encodeURI(
     BASE_URL +
-      destination +
+      sellerPhoneWithCode +
       TEXT_QUERY_PARAM +
       ORDER_ID_PREFIX +
       orderId +
