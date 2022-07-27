@@ -10,15 +10,8 @@ export const Cart = ({ totalQuantity, onPressConfirm, totalPrice }) => {
             Total Price:<span className="text-2xl"> &#8377;{totalPrice} </span>
           </h3>
         </div>
-        {totalQuantity > 10 && (
-          <div className="text-gray-100">
-            You can only select at max 10 items, please update the selection!{" "}
-          </div>
-        )}
         <button
-          className={`border  p-2  px-4 rounded ${
-            totalQuantity > 11 ? "bg-gray-300" : "bg-green-800 "
-          }`}
+          className={"border p-2 px-4 rounded bg-green-600"}
           disabled={totalQuantity > 11}
           onClick={onPressConfirm}
         >
