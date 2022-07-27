@@ -57,11 +57,7 @@ const ModalForm = ({ totalQuantity, totalPrice, onPressConfirm }) => {
           <h3>Total Price: &#8377; {totalPrice}</h3>
         </div>
         <button
-          className={`text-white p-2 rounded w-full ${
-            isNameInvalid || isPhoneInvalid
-              ? `bg-green-900 cursor-not-allowed`
-              : `bg-green-600 cursor-pointer`
-          } `}
+          className="text-white p-2 rounded w-full bg-green-600 cursor-pointer disabled:bg-gray-300 disabled:cursor-not-allowed"
           disabled={isNameInvalid || isPhoneInvalid}
           onClick={onPressConfirmButton}
         >

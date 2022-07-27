@@ -1,5 +1,3 @@
-import uuid from "react-uuid";
-
 const BASE_URL = "https://wa.me/";
 const TEXT_QUERY_PARAM = "?text=";
 
@@ -8,7 +6,7 @@ const TIMESTAMP_PREFIX = "\nTimestamp: ";
 const NAME_PREFIX = "\nName: ";
 const PHONE_PREFIX = "\nPhone: ";
 const ITEMS_PREFIX = "\n\nItems: ";
-const PRICE_PREFIX = "\n\nTotal Price: ₹";
+const PRICE_PREFIX = "\n\nTotal Price: ₹ ";
 
 export const generateLink = (
   destination,
@@ -18,7 +16,7 @@ export const generateLink = (
   items,
   pricePerPiece
 ) => {
-  const orderId = uuid();
+  const orderId = getUniqueOrderId();
   const timestamp = new Date().toString();
 
   return encodeURI(
@@ -44,11 +42,13 @@ const getItemsString = (items) => {
   let itemsString = "";
   Object.keys(items).forEach((key) => {
     if (items[key] > 0) {
-      itemsString += `\n#${key} -- ${items[key]}`;
+      itemsString += `\n${key} -- ${items[key]}`;
     }
   });
   return itemsString;
 };
+
+const getUniqueOrderId = () => new Date().valueOf().toString(36);
 
 export const validatePhone = (value) => {
   if (!validateFormValue(value)) return false;
