@@ -28,7 +28,7 @@ function App() {
   }, []);
 
   const onPressConfirm = ({ name, phone }) => {
-    console.log(
+    window.open(
       generateLink(
         DEST_PHONE_NUMBER,
         name,
@@ -36,7 +36,8 @@ function App() {
         totalQuantity,
         items,
         PRICE_PER_ITEM
-      )
+      ),
+      "_blank"
     );
   };
 
