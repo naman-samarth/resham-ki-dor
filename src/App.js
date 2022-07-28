@@ -77,7 +77,7 @@ function App() {
         />
       )}
       <Modal
-        className="absolute w-[80%] md:w-[35%] h-[50%] top-0 bottom-0 left-0 right-0 mx-auto my-auto bg-white text-gray-800 border border-gray-400 rounded p-5"
+        className="absolute w-[80%] md:w-[35%] h-[60%] top-0 bottom-0 left-0 right-0 mx-auto my-auto bg-white text-gray-800 border border-gray-400 rounded p-5"
         isOpen={showModal}
         onRequestClose={closeModal}
       >
