@@ -5,6 +5,7 @@ import { Cart } from "./components/Cart";
 import ModalForm from "./components/ModalForm";
 import { generateLink } from "./utils/utils";
 import Modal from "react-modal";
+import ContactUs from "./components/ContactUs";
 
 const PRODUCTS_SIZE = process.env.REACT_APP_PRODUCTS_SIZE;
 const SELLER_NAME = process.env.REACT_APP_SELLER_NAME;
@@ -66,6 +67,7 @@ function App() {
           totalQuantity={totalQuantity}
           totalLimit={TOTAL_LIMIT}
         />
+        <ContactUs sellerName={SELLER_NAME} sellerPhone={SELLER_PHONE_NUMBER} />
       </div>
       {totalQuantity > 0 && (
         <Cart
