@@ -36,17 +36,17 @@ const Product = ({
         </div>
         <div class="flex gap-x-1 items-center ">
           <CounterButton
-            title="+"
-            onClick={increment}
-            disabled={quantity >= totalLimit || totalQuantity >= 10}
+            title="-"
+            onClick={decrement}
+            disabled={quantity < 1}
           />
           <div className="w-10 h-10  text-gray-600 flex justify-center items-center">
             {quantity}
           </div>
           <CounterButton
-            title="-"
-            onClick={decrement}
-            disabled={quantity < 1}
+            title="+"
+            onClick={increment}
+            disabled={quantity >= totalLimit || totalQuantity >= totalLimit}
           />
         </div>
       </div>
