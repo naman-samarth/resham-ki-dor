@@ -22,7 +22,7 @@ const ModalForm = ({ totalQuantity, totalPrice, onPressConfirm }) => {
 
   return (
     <div className="flex h-full flex-col justify-between">
-      <div className="text-bold">Please provide your contact information :</div>
+      <div className="text-bold">Contact information :</div>
       <div>
         <label htmlFor="name">Name :</label>
         <div>
