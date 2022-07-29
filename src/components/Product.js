@@ -26,7 +26,7 @@ const Product = ({
   };
   return (
     <div className="flex flex-col items-center justify-between bg-white drop-shadow-md border-1 hover:border-2 border-gray-300 hover:border-red-700  p-2 pb-4 rounded gap-y-4">
-      <img alt="img" loading="lazy" src={`${IMG_BASE_URL}${id}.webp`} />
+      <img alt="img" loading="lazy" src={`${IMG_BASE_URL}${id}.jpeg`} />
       <div className="flex items-center justify-between text-red-700 text-xl font-bold w-full my-2 px-2">
         <div className="flex">
           <h3 className="text-xl">
