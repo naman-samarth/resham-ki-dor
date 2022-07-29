@@ -26,7 +26,7 @@ const Product = ({
   };
   return (
     <div className="flex flex-col items-center justify-between bg-white drop-shadow-md border-1 hover:border-2 border-gray-300 hover:border-red-700  p-2 pb-4 rounded gap-y-4">
-      <img alt="img" loading="lazy" src={`${IMG_BASE_URL}${id}.webp`} />
+      <img alt="img" loading="lazy" src={`${IMG_BASE_URL}${id}.jpeg`} />
       <div className="flex items-center justify-between text-red-700 text-xl font-bold w-full my-2 px-2">
         <div className="flex">
           <h3 className="text-xl">
@@ -36,17 +36,17 @@ const Product = ({
         </div>
         <div class="flex gap-x-1 items-center ">
           <CounterButton
-            title="+"
-            onClick={increment}
-            disabled={quantity >= totalLimit || totalQuantity >= 10}
+            title="-"
+            onClick={decrement}
+            disabled={quantity < 1}
           />
           <div className="w-10 h-10  text-gray-600 flex justify-center items-center">
             {quantity}
           </div>
           <CounterButton
-            title="-"
-            onClick={decrement}
-            disabled={quantity < 1}
+            title="+"
+            onClick={increment}
+            disabled={quantity >= totalLimit || totalQuantity >= totalLimit}
           />
         </div>
       </div>
